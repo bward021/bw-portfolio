@@ -1,8 +1,8 @@
 {
-  "name": "react-redux-router",
+  "name": "bw-portfolio",
   "version": "1.0.0",
-  "description": "Basic skeleton codebase for React/Redux/Router applications.",
-  "scripts": {
+  "description": "Personal portfolio app built in React",
+    "scripts": {
     "preinstall": "npm set audit false",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bottega-code-school/js-builder.git"
+    "url": "git@github.com:bward021/bw-portfolio.git"
   },
   "keywords": [
     "es6",
@@ -25,10 +25,10 @@
     "sass",
     "css module"
   ],
-  "author": "Your Name Here",
+  "author": "Brandon Ward",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bottega-code-school/js-builder/issues"
+    "url": "https://github.com/bward021/bw-portfolio/issues"
   },
   "homepage": "https://github.com/bottega-code-school/js-builder",
   "dependencies": {
