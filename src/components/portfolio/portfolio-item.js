@@ -1,10 +1,10 @@
 import React from "react";
 
 //create the function here
-export default function (){
+export default function (props){
   return (
     <div>
-      <h3>Portfolio Item</h3>
+      <h3>{props.title}</h3>
     </div>
   )
 }
