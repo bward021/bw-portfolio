@@ -3,33 +3,45 @@ import React, { Component } from "react";
 import PortfolioItem from "./portfolio-item";
 
 export default class PortfolioContainer extends Component {
-  //State
-  //Lifecycle Methods
   constructor() {
     super();
+
     this.state = {
-      pageTitle: "Welcome to My Portfolio",
+      pageTitle: "Welcome to my portfolio",
       data: [
-        {title: "Quip"},
-        {title: "Eventright"},
-        {title: "Ministry Safe"}
+        { title: "Quip" },
+        { title: "Eventbrite" },
+        { title: "Ministry Safe" },
+        { title: "SwingAway" }
       ]
-    }
+    };
+
+    this.handlePageTitleUpdate = this.handlePageTitleUpdate.bind(this);
   }
 
-  portfolioItems () { 
+  portfolioItems() {
     return this.state.data.map(item => {
-      return <PortfolioItem title={item.title} />
-      // return <h2>{item}</h2>
-    })
+      return <PortfolioItem title={item.title} url={"google.com"} />;
+    });
+  }
+
+  handlePageTitleUpdate() {
+    this.setState({
+      pageTitle: "Something Else"
+    });
   }
 
   render() {
     return (
       <div>
         <h2>{this.state.pageTitle}</h2>
+
         {this.portfolioItems()}
+
+        <hr />
+
+        <button onClick={this.handlePageTitleUpdate}>Change Title</button>
       </div>
-    )
+    );
   }
 }
