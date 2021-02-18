@@ -26,7 +26,7 @@
        padding-right: 100px;
 
       .subtitle {
-        transition: 1s ease-in-out;
+        transition: 0.5s ease-in-out;
         color: transparent;
       }
      }
@@ -39,8 +39,12 @@
      .logo-wrapper img {
        width: 50%;
        margin-bottom: 20px;
-       opacity: 200%;
      }
 
    }
+}
+
+.image-blur {
+  transition: 0.5s;
+  filter: brightness(10%);
 }
