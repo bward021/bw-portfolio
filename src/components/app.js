@@ -15,29 +15,17 @@ export default class App extends Component {
   constructor() {
     super();
 
-    this.getPortfolioItems = this.getPortfolioItems.bind(this);
   }
 
-
-  getPortfolioItems() {
-    axios.get('https://bward.devcamp.space/portfolio/portfolio_items')
-    .then(response => {
-    console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    })
-    }
-
   render() {
-    this.getPortfolioItems()
     return (
       <div className="app">
         <Router>
           <div>
+            <NavigationContainer />
             <h1>Brandon Ward Portfolio</h1>
             <div>{moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
-            <NavigationContainer />
+            
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/about-me" component={About} />
