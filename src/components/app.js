@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment";
-import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavigationContainer from "./navigation/navigation-container";
@@ -19,12 +17,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="app">
+      <div className="container">
         <Router>
           <div>
             <NavigationContainer />
-            <h1>Brandon Ward Portfolio</h1>
-            <div>{moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
             
             <Switch>
               <Route exact path="/" component={Home} />
