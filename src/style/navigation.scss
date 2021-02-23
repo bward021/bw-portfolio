@@ -40,10 +40,11 @@
   .right-side {
     display: flex;
     margin: 10px;
-
+    
     a {
       margin: 15px;
       cursor: pointer;
+      transition: 0.4s ease-in-out;
 
       &:hover {
         border-bottom: 2px solid black;
