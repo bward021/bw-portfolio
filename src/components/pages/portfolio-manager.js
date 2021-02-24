@@ -18,7 +18,10 @@ export default class PortfolioManager extends Component {
   }
 
   handleSuccessfulFormSubmission(portfolioItem) {
-
+    console.log("handleSuccessfulFormSubmission", portfolioItem);
+    this.setState({
+      portfolioItems: [portfolioItem].concat(this.state.portfolioItems)
+    })
   }
 
   handleFormSubmissionError(error) {
@@ -26,7 +29,7 @@ export default class PortfolioManager extends Component {
   }
 
   getPortfolioItems() {
-    axios.get('https://bward.devcamp.space/portfolio/portfolio_items', {withCredentials: true})
+    axios.get('https://bward.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc', {withCredentials: true})
       .then(res => {
         this.setState({
           isLoading: false,
