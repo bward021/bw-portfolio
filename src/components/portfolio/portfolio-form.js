@@ -43,7 +43,7 @@ export default class PortfolioForm extends Component {
     }) .catch(error => {
       console.log("portfolio form submit error: ", error);
     })
-    
+
     event.preventDefault();
     console.log("event: ", event);
   }
@@ -84,13 +84,19 @@ export default class PortfolioForm extends Component {
               value={this.state.position}
               onChange={this.handleChange}
             />
-            <input
+            <select
+              required
               type="text"
               name="category"
               placeholder="Category"
               value={this.state.category}
               onChange={this.handleChange}
-            />
+            > 
+              <option value="" defaultValue>Select Category</option>
+              <option value="eCommerce">eCommerce</option>
+              <option value="Scheduling">Scheduling</option>
+              <option value="Enterprise">Enterprise</option>
+            </select>
           </div>
           <div>
             <input
