@@ -18,6 +18,9 @@ export default class PortfolioForm extends Component {
       thumb_img: "",
       banner_image: "",
       logo: "",
+      editMode: false,
+      apiUrl: "https://bward.devcamp.space/portfolio/portfolio_items",
+      apiAction: "post"
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -55,6 +58,9 @@ export default class PortfolioForm extends Component {
         category: category || "",
         position: position || "",
         url: url || "",
+        editMode: true,
+        apiUrl: `https://bward.devcamp.space/portfolio/portfolio_items/${id}`,
+        apiAction: "patch"
       })
      }
   }
@@ -121,12 +127,12 @@ export default class PortfolioForm extends Component {
 
   handleSubmit(event) {
     // https://bward.devcamp.space/portfolio/portfolio_items
-    axios
-      .post(
-        "https://bward.devcamp.space/portfolio/portfolio_items",
-        this.buildForm(),
-        { withCredentials: true }
-      )
+    axios({
+      method: this.state.apiAction,
+      url: this.state.apiUrl,
+      data: this.buildForm(),
+      withCredentials: true
+    })
       .then((response) => {
         this.props.handleSuccessfulFormSubmission(response.data.portfolio_item);
         this.setState({
