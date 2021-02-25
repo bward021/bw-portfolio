@@ -10,6 +10,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 3px;
 
       .title {
         color: $offwhite;
@@ -21,7 +22,7 @@
         color: $offwhite;
         font-size: 1.5em;
         transition: 0.5s ease-in-out;
-        padding: 5px;
+        padding: 2px 7px;
         border-radius: 8px;
 
         &:hover {
