@@ -4,4 +4,7 @@
   padding: 42px;
 
   @include input-element();
+  // input {
+  //   margin-bottom: 0px;
+  // }
 }
