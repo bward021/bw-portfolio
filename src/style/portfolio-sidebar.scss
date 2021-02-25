@@ -17,21 +17,25 @@
         font-size: 1.5rem;
       }
 
-      .delete-icon {
-        cursor: pointer;
-        color: $offwhite;
-        font-size: 1.5em;
-        transition: 0.5s ease-in-out;
-        padding: 2px 7px;
-        border-radius: 8px;
+      .actions {
+        display: grid;
+        grid-template-columns: 38px 35px;
+        //grid-gap: 10px;
 
-        &:hover {
-          color: $warning;
-          background-color: $offwhite;
+        .action-icon {
+          cursor: pointer;
+          color: $offwhite;
+          font-size: 1.5em;
+          transition: 0.5s ease-in-out;
+          padding: 2px 7px;
+          border-radius: 8px;
+
+          &:hover {
+            color: $warning;
+            background-color: $offwhite;
+          }
         }
       }
-
-
     }
   }
 }
