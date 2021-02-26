@@ -20,6 +20,23 @@
         object-fit: cover;
         border-radius: 10px;
       }
+      .image-removal-link {
+        display: flex;
+        justify-content: center;
+
+        a{
+          font-weight: 900;
+          border-bottom: 1px solid transparent;
+          cursor: pointer;
+          transition: 0.3s ease-in-out;
+          
+          &:hover {
+            color: $warning;
+            border-bottom: 1px solid $warning;
+
+          }
+        }
+      }
     }
   }
 }
