@@ -30,7 +30,7 @@ export default class PortfolioForm extends Component {
     this.handleThumbDrop = this.handleThumbDrop.bind(this);
     this.handleBannerDrop = this.handleBannerDrop.bind(this);
     this.handleLogoDrop = this.handleLogoDrop.bind(this);
-    this.deleteImage = this.deleteImage.bind(this)
+    this.deleteImage = this.deleteImage.bind(this);
 
     this.thumbRef = React.createRef();
     this.bannerRef = React.createRef();
@@ -38,7 +38,19 @@ export default class PortfolioForm extends Component {
   }
 
   deleteImage(imageType) {
-    console.log("Delete Imgae: ", imageType);
+    axios
+      .delete(
+        `https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state.id}?image_type=${imageType}`,
+        { withCredentials: true }
+      )
+      .then((response) => {
+        this.setState({
+          [`${imageType}_url`]: ""
+        })
+      })
+      .catch((error) => {
+        console.log("delete img error: ", error);
+      });
   }
 
   componentDidUpdate() {
@@ -256,14 +268,14 @@ export default class PortfolioForm extends Component {
                 </div>
               </div>
             ) : (
-            <DropzoneComponent
-              ref={this.bannerRef}
-              config={this.componentConfig()}
-              djsConfig={this.djsConfig()}
-              eventHandlers={this.handleBannerDrop()}
-            >
-              <div className="dz-message">Banner Image</div>
-            </DropzoneComponent>
+              <DropzoneComponent
+                ref={this.bannerRef}
+                config={this.componentConfig()}
+                djsConfig={this.djsConfig()}
+                eventHandlers={this.handleBannerDrop()}
+              >
+                <div className="dz-message">Banner Image</div>
+              </DropzoneComponent>
             )}
             {this.state.logo_url && this.state.editMode ? (
               <div className="portfolio-manager-image-wrapper">
@@ -273,14 +285,14 @@ export default class PortfolioForm extends Component {
                 </div>
               </div>
             ) : (
-            <DropzoneComponent
-              ref={this.logoRef}
-              config={this.componentConfig()}
-              djsConfig={this.djsConfig()}
-              eventHandlers={this.handleLogoDrop()}
-            >
-              <div className="dz-message">Logo</div>
-            </DropzoneComponent>
+              <DropzoneComponent
+                ref={this.logoRef}
+                config={this.componentConfig()}
+                djsConfig={this.djsConfig()}
+                eventHandlers={this.handleLogoDrop()}
+              >
+                <div className="dz-message">Logo</div>
+              </DropzoneComponent>
             )}
           </div>
         </div>
