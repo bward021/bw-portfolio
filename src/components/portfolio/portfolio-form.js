@@ -20,7 +20,7 @@ export default class PortfolioForm extends Component {
       logo: "",
       editMode: false,
       apiUrl: "https://bward.devcamp.space/portfolio/portfolio_items",
-      apiAction: "post"
+      apiAction: "post",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,7 +37,7 @@ export default class PortfolioForm extends Component {
   }
 
   componentDidUpdate() {
-     if (Object.keys(this.props.portfolioToEdit).length > 0) {
+    if (Object.keys(this.props.portfolioToEdit).length > 0) {
       const {
         id,
         name,
@@ -47,7 +47,7 @@ export default class PortfolioForm extends Component {
         url,
         thumb_image_url,
         banner_image_url,
-        logo_url
+        logo_url,
       } = this.props.portfolioToEdit;
 
       this.props.clearPortfolioToEdit();
@@ -60,9 +60,12 @@ export default class PortfolioForm extends Component {
         url: url || "",
         editMode: true,
         apiUrl: `https://bward.devcamp.space/portfolio/portfolio_items/${id}`,
-        apiAction: "patch"
-      })
-     }
+        apiAction: "patch",
+        thumb_img: thumb_image_url || "",
+        banner_image: banner_image_url || "",
+        logo: logo_url || "",
+      });
+    }
   }
 
   handleThumbDrop() {
@@ -131,11 +134,11 @@ export default class PortfolioForm extends Component {
       method: this.state.apiAction,
       url: this.state.apiUrl,
       data: this.buildForm(),
-      withCredentials: true
+      withCredentials: true,
     })
       .then((response) => {
         if (this.state.editMode) {
-          this.props.handleEditFormSubmission()
+          this.props.handleEditFormSubmission();
         } else {
           this.props.handleNewFormSubmission(response.data.portfolio_item);
         }
@@ -150,7 +153,7 @@ export default class PortfolioForm extends Component {
           logo: "",
           editMode: false,
           apiUrl: "https://bward.devcamp.space/portfolio/portfolio_items",
-          apiAction: "post"
+          apiAction: "post",
         });
         [this.thumbRef, this.bannerRef, this.logoRef].forEach((ref) => {
           ref.current.dropzone.removeAllFiles();
@@ -172,57 +175,60 @@ export default class PortfolioForm extends Component {
 
   render() {
     return (
-        <form onSubmit={this.handleSubmit} className="portfolio-form-wrapper">
-          <div className="two-column">
-            <input
-              type="text"
-              name="name"
-              placeholder="Portfolio Item Name"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            <input
-              type="text"
-              name="url"
-              placeholder="URL"
-              value={this.state.url}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="two-column">
-            <input
-              type="text"
-              name="position"
-              placeholder="Position"
-              value={this.state.position}
-              onChange={this.handleChange}
-            />
-            <select
-              required
-              type="text"
-              name="category"
-              placeholder="Category"
-              className="select-element"
-              value={this.state.category}
-              onChange={this.handleChange}
-            >
-              <option value="" defaultValue>
-                Select Category
-              </option>
-              <option value="eCommerce">eCommerce</option>
-              <option value="Scheduling">Scheduling</option>
-              <option value="Enterprise">Enterprise</option>
-            </select>
-          </div>
-          <div className="one-column">
-            <textarea
-              type="text"
-              name="description"
-              placeholder="Description"
-              value={this.state.description}
-              onChange={this.handleChange}
-            />
-            <div className="image-uploader">
+      <form onSubmit={this.handleSubmit} className="portfolio-form-wrapper">
+        <div className="two-column">
+          <input
+            type="text"
+            name="name"
+            placeholder="Portfolio Item Name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            name="url"
+            placeholder="URL"
+            value={this.state.url}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className="two-column">
+          <input
+            type="text"
+            name="position"
+            placeholder="Position"
+            value={this.state.position}
+            onChange={this.handleChange}
+          />
+          <select
+            required
+            type="text"
+            name="category"
+            placeholder="Category"
+            className="select-element"
+            value={this.state.category}
+            onChange={this.handleChange}
+          >
+            <option value="" defaultValue>
+              Select Category
+            </option>
+            <option value="eCommerce">eCommerce</option>
+            <option value="Scheduling">Scheduling</option>
+            <option value="Enterprise">Enterprise</option>
+          </select>
+        </div>
+        <div className="one-column">
+          <textarea
+            type="text"
+            name="description"
+            placeholder="Description"
+            value={this.state.description}
+            onChange={this.handleChange}
+          />
+          <div className="image-uploader">
+            {this.state.thumb_img && this.state.editMode ? (
+              <img src={this.state.thumb_img} />
+            ) : (
               <DropzoneComponent
                 ref={this.thumbRef}
                 config={this.componentConfig()}
@@ -231,28 +237,31 @@ export default class PortfolioForm extends Component {
               >
                 <div className="dz-message">Thumbnail</div>
               </DropzoneComponent>
-              <DropzoneComponent
-                ref={this.bannerRef}
-                config={this.componentConfig()}
-                djsConfig={this.djsConfig()}
-                eventHandlers={this.handleBannerDrop()}
-              > 
-                <div className="dz-message">Banner Image</div>
-              </DropzoneComponent>
-              <DropzoneComponent
-                ref={this.logoRef}
-                config={this.componentConfig()}
-                djsConfig={this.djsConfig()}
-                eventHandlers={this.handleLogoDrop()}
-              >
-                <div className="dz-message">Logo</div>
-              </DropzoneComponent>
-            </div>
+            )}
+            <DropzoneComponent
+              ref={this.bannerRef}
+              config={this.componentConfig()}
+              djsConfig={this.djsConfig()}
+              eventHandlers={this.handleBannerDrop()}
+            >
+              <div className="dz-message">Banner Image</div>
+            </DropzoneComponent>
+            <DropzoneComponent
+              ref={this.logoRef}
+              config={this.componentConfig()}
+              djsConfig={this.djsConfig()}
+              eventHandlers={this.handleLogoDrop()}
+            >
+              <div className="dz-message">Logo</div>
+            </DropzoneComponent>
           </div>
-          <div >
-            <button type="submit" className="btn">Save</button>
-          </div>
-        </form>
+        </div>
+        <div>
+          <button type="submit" className="btn">
+            Save
+          </button>
+        </div>
+      </form>
     );
   }
 }
