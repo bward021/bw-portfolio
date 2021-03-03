@@ -22,7 +22,9 @@ class Blog extends Component {
     window.addEventListener("scroll", this.onScroll, false);
     this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
-    this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(this);
+    this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(
+      this
+    );
   }
 
   handleSuccessfulNewBlogSubmission(blog) {
@@ -86,7 +88,7 @@ class Blog extends Component {
       });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getBlogItems();
   }
 
@@ -98,6 +100,7 @@ class Blog extends Component {
     const blogRecords = this.state.blogItems.map(blogItem => {
       return <BlogItem key={blogItem.id} blogItem={blogItem} />;
     });
+    
 
     return (
       <div className="blog-container">
@@ -109,13 +112,13 @@ class Blog extends Component {
           modalIsOpen={this.state.blogModalIsOpen}
         />
 
-        {this.props.loggedInStatus === "LOGGED_IN" ?
-        <div className="new-blog-link">
-          <a onClick={this.handleNewBlogClick}>
-            <FontAwesomeIcon icon={"plus-circle"} />
-          </a>
-        </div> : null}
-
+        {this.props.loggedInStatus === "LOGGED_IN" ? (
+          <div className="new-blog-link">
+            <a onClick={this.handleNewBlogClick}>
+              <FontAwesomeIcon icon="plus-circle" />
+            </a>
+          </div>
+        ) : null}
 
         <div className="content-container">{blogRecords}</div>
 
