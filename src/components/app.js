@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash, faSignOutAlt, faEdit, faSpinner } from "@fortawesome/free-solid-svg-icons"
+import Icons from "../helpers/icons"
 
 
 import NavigationContainer from "./navigation/navigation-container";
@@ -16,11 +15,12 @@ import PortfolioManager from "./pages/portfolio-manager";
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import NoMatch from "./pages/no-match";
 
-library.add(faTrash, faSignOutAlt, faEdit, faSpinner)
 
 export default class App extends Component {
   constructor(props) {
     super(props);
+
+    Icons();
 
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN",
@@ -102,7 +102,15 @@ export default class App extends Component {
 
               <Route path="/contact" component={Contact} />
 
-              <Route exact path="/blog" component={Blog} />
+              <Route exact path="/blog" 
+                render={props=> (
+                  <Blog 
+                    {...props}
+                    loggedInStatus={this.state.loggedInStatus}
+                  />
+                )}
+              
+              />
 
               <Route exact path="/b/:slug" component={BlogDetail} />
 
