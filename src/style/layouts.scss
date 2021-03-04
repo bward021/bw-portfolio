@@ -2,5 +2,13 @@
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100%;
+  height: calc(100vh - 116px);
+
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+  }
 }
