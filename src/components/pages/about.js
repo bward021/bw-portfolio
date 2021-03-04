@@ -1,12 +1,12 @@
 import React from "react";
-import profilPicture from "../../../static/assets/images/about/devtrunk.jpg"
+import profilePicture from "../../../static/assets/images/about/devtrunk.jpg"
 
 export default function () {
   return (
     <div className="content-page-wrapper">
       <div className="left-column" 
         style={{
-          background:"url(" + profilPicture + ") no-repeat",
+          background:"url(" + profilePicture + ") no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "Center"
         }}>

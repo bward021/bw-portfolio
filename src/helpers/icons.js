@@ -1,8 +1,9 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash, faSignOutAlt, faEdit, faSpinner, faPlusCircle } from "@fortawesome/free-solid-svg-icons"
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faTrash, faSignOutAlt, faEdit, faSpinner, faPlusCircle, faPhone, faEnvelope, faMale } from "@fortawesome/free-solid-svg-icons"
 
 const Icons =() =>{
-  library.add(faTrash, faSignOutAlt, faEdit, faSpinner, faPlusCircle)
+  library.add(faTrash, faSignOutAlt, faEdit, faSpinner, faPlusCircle, faPhone, faEnvelope, faMale, fab)
 }
 
 
