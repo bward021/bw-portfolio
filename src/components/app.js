@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import Icons from "../helpers/icons"
-
+import Icons from "../helpers/icons";
 
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
@@ -14,7 +13,6 @@ import Auth from "./pages/auth";
 import PortfolioManager from "./pages/portfolio-manager";
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import NoMatch from "./pages/no-match";
-
 
 export default class App extends Component {
   constructor(props) {
@@ -83,7 +81,13 @@ export default class App extends Component {
   }
 
   authorizedPages() {
-    return [<Route key="portfolio-manager" path="/portfolio-manager" component={PortfolioManager} />];
+    return [
+      <Route
+        key="portfolio-manager"
+        path="/portfolio-manager"
+        component={PortfolioManager}
+      />,
+    ];
   }
 
   render() {
@@ -102,17 +106,23 @@ export default class App extends Component {
 
               <Route path="/contact" component={Contact} />
 
-              <Route exact path="/blog" 
-                render={props=> (
-                  <Blog 
+              <Route
+                exact
+                path="/blog"
+                render={(props) => (
+                  <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
+                )}
+              />
+
+              <Route
+                path="/b/:slug"
+                render={(props) => (
+                  <BlogDetail
                     {...props}
                     loggedInStatus={this.state.loggedInStatus}
                   />
                 )}
-              
               />
-
-              <Route exact path="/b/:slug" component={BlogDetail} />
 
               {this.state.loggedInStatus === "LOGGED_IN"
                 ? this.authorizedPages()
@@ -128,7 +138,7 @@ export default class App extends Component {
                   />
                 )}
               />
-              
+
               <Route
                 exact
                 path="/portfolio/:slug"
