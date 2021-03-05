@@ -14,10 +14,16 @@ export default function () {
       ></div>
       <div className="right-column">
         <p>
-          Hey there, my name is Brandon! I have come to learn that we live in a
-          day and age where things are changing. Constantly! Now, some people
-          would take a look at that statement and have an instant flood of
-          negative emotion. <b>NOT ME!</b>
+          Hey there, my name is Brandon! I am a soccer player, photographer and
+          software developer. I love spending time with my family, doing puzzles
+          or being out in the great outdoors. I am so excited that you have come
+          here to learn a little bit more about me!
+        </p>
+        <p>
+          I have come to learn lately that we live in a day and age where things
+          are changing. Constantly! Now, some people would take a look at that
+          statement and have an instant flood of negative emotion.{" "}
+          <b>NOT ME!</b>
         </p>
         I revel in the thought of change, because change means growth. If we are
         stuck in the everyday rhythm of the "Box" that is called complacency, we
