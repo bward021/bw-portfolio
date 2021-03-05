@@ -15,9 +15,9 @@ export default function () {
       <div className="right-column">
         <p>
           Hey there, my name is Brandon! I am a soccer player, photographer and
-          software developer. I love spending time with my family, doing puzzles
-          or being out in the great outdoors. I am so excited that you have come
-          here to learn a little bit more about me!
+          a full stack software developer. I love spending time with my family,
+          doing puzzles or being out in the great outdoors. I am so excited that
+          you have come here to learn a little bit more about me!
         </p>
         <p>
           I have come to learn lately that we live in a day and age where things
